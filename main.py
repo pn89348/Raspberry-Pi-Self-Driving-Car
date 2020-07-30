@@ -36,8 +36,9 @@ def stop():
 
 setup()
 
+for i in range(100, 0, -1):
+    forward(i)
+    time.sleep(0.05)
 
-forward(power)
-time.sleep(2)
 stop()
 gpio.cleanup()
