@@ -149,7 +149,7 @@ def main(stdscr):
             key = stdscr.getch()
             process_key(key)
             # Update
-            display_text(gear, y_position=1, center_x=True)
+            display_text(gear, position_y=1, center_x=True)
 
         cleanup()
     except Exception as e:
