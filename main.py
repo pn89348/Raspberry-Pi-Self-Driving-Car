@@ -150,7 +150,8 @@ def main(stdscr):
             display_text(gear, y_position=1, center_x=True)
 
         cleanup()
-    except:
+    except(Exception):
+        print(Exception)
         cleanup()
 
 curses.wrapper(main)
