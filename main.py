@@ -36,17 +36,21 @@ def setup():
 
 def forward(speed=100):
     #gpio.output(forward_pin, gpio.HIGH)
-    gpio.output(reverse_pin, gpio.LOW)
+    #gpio.output(reverse_pin, gpio.LOW)
+    reverse_pwm.ChangeDutyCycle(0)
     forward_pwm.ChangeDutyCycle(speed)
 
 def reverse(speed=100):
     #gpio.output(reverse_pin, gpio.HIGH)
-    gpio.output(forward_pin, gpio.LOW)
+    #gpio.output(forward_pin, gpio.LOW)
+    forward_pwm.ChangeDutyCycle(0)
     reverse_pwm.ChangeDutyCycle(speed)
 
 def stop():
-    gpio.output(forward_pin, gpio.LOW)
-    gpio.output(reverse_pin, gpio.LOW)
+    #gpio.output(forward_pin, gpio.LOW)
+    #gpio.output(reverse_pin, gpio.LOW)
+    forward_pwm.ChangeDutyCycle(0)
+    reverse_pwm.ChangeDutyCycle(0)
 
 def cleanup():
     stop()
