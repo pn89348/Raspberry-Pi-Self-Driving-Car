@@ -21,28 +21,35 @@ def process_event(event=""):
     if event.type == pygame.QUIT:
         global running
         running = False
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_q:
+            running = False
+        if event.key == pygame.K_w:
+            print("w")
+    if event.key == pygame.KEYUP:
+        pass
 
 def pygame_setup():
-    global WIDTH
-    global HEIGHT
+    # global WIDTH
+    # global HEIGHT
     global FPS
-    global screen
+    # global screen
     global clock
-    global all_sprites
-    global car
+    # global all_sprites
+    # global car
 
-    WIDTH = 480
-    HEIGHT = 300
+    # WIDTH = 480
+    # HEIGHT = 300
     FPS = 30
 
     pygame.init()
-    pygame.mixer.init()
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("Raspberry Pi Car")
+    # pygame.mixer.init()
+    # screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    # pygame.display.set_caption("Raspberry Pi Car")
     clock = pygame.time.Clock()
-    all_sprites = pygame.sprite.Group()
-    car = Car()
-    all_sprites.add(car)
+    # all_sprites = pygame.sprite.Group()
+    # car = Car()
+    # all_sprites.add(car)
 
 pygame_setup()
 
@@ -51,14 +58,16 @@ while running:
     # Timing
     clock.tick(FPS)
     # Input
+    print(pygame.event.get())
     for event in pygame.event.get():
+        print(event, event.type)
         process_event(event)
     # Update
-    all_sprites.update()
+    # all_sprites.update()
 
     # Render
-    screen.fill(WHITE)
-    all_sprites.draw(screen)
-    pygame.display.flip()
+    # screen.fill(WHITE)
+    # all_sprites.draw(screen)
+    # pygame.display.flip()
 
 pygame.quit()
