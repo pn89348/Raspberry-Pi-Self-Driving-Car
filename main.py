@@ -82,6 +82,7 @@ def display_text(text, position_y=0, position_x=0, center_y=False, center_x=Fals
 
 def process_key(key):
     global running
+    global gear
     stdscr.clear()
     if key < 128:
         letter = ASCII[key]
