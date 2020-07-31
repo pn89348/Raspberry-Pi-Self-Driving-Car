@@ -84,7 +84,7 @@ def process_key(key):
     global running
     stdscr.clear()
     if key < 128:
-        letter = display_text(ASCII[key])
+        letter = ASCII[key]
         if letter.lower() == 'w':
             if gear == 'D':
                 forward(power)
@@ -131,28 +131,28 @@ def process_key(key):
 
 ### MAIN FUNCTION
 def main(stdscr):
-    # try:
-    ## Setup
-    # Curses
-    curses.curs_set(0)
-    curses.init_pair(1, FOREGROUND, BACKGROUND)
-    # Raspberry Pi
-    setup()
+    try:
+        ## Setup
+        # Curses
+        curses.curs_set(0)
+        curses.init_pair(1, FOREGROUND, BACKGROUND)
+        # Raspberry Pi
+        setup()
 
-    stdscr.attron(curses.color_pair(1))
+        stdscr.attron(curses.color_pair(1))
 
-    ## Main Loop
-    while running:
-        # Input
-        key = stdscr.getch()
-        process_key(key)
-        # Update
-        display_text(gear, y_position=1, center_x=True)
+        ## Main Loop
+        while running:
+            # Input
+            key = stdscr.getch()
+            process_key(key)
+            # Update
+            display_text(gear, y_position=1, center_x=True)
 
-    cleanup()
-    # except(Exception):
-    #     display_text(str(Exception))
-    #     time.sleep(5)
-    #     cleanup()
+        cleanup()
+    except Exception as e:
+        display_text(str(e))
+        time.sleep(5)
+        cleanup()
 
 curses.wrapper(main)
