@@ -151,7 +151,8 @@ def main(stdscr):
 
         cleanup()
     except(Exception):
-        print(Exception)
+        display_text(str(Exception))
+        time.sleep(5)
         cleanup()
 
 curses.wrapper(main)
